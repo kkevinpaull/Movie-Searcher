@@ -6,12 +6,11 @@
     <title>Movie Explorer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./asset/logo.png" type="image/x-icon">
-    <script src="index.js"></script>
+    <script src="info.js"></script>
     <script src="https://kit.fontawesome.com/fe44566e6e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- <div class="spotlight"> KEVIN</div> -->
-     <section class="landing">
+    <section class="info__landing">
         <nav class="nav__landing">
             <div class="nav__container">
                 <div class="nav__row">
@@ -22,7 +21,7 @@
                     <ul class="nav__links">
                         <li><a class="nav__link" href="index.html">Home</a></li>
                         <li><a class="nav__link" href="movie.html">Find your movie</a></li>
-                        <li><a class="nav__link nav__link--border" href="mailto:castanetokevin@gmail.com" target="_blank">Contact</a></li>
+                        <li><a class="nav__link nav__link--border" href="">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -30,17 +29,19 @@
         <header class="header__landing">
             <div class="header__container">
                 <div class="header__row">
-                    <h1 class="header__description">
-                        The world’s best movie database
-                    </h1>
-                    <p class="header__sub--description">
-                        Explore. Search. Experience movies like never before.
-                    </p>
-                    <div class="search__bar">
-                        <input type="text" class="header__search--bar" placeholder="Search by Title or Keyword">
-                        <button class="header__search--btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <div class="spotlight"></div>
-                    </div>
+                    <div class="movie-info">
+                        <div class="info">
+                          <div class="info-card">
+                            <div class="info-card__container">
+                                <img src="https://m.media-amazon.com/images/M/MV5BNDZjMGZjMDktOTZlNC00MTQ5LTkzY2UtZjM1MjE0NDcwNzk1XkEyXkFqcGc@._V1_SX300.jpg" alt="">
+                              <h3>TITLE</h4>
+                                <p><b>Year released:</b> email@email.com</p>
+                                <p><b>Phone:</b> 0000000000</p>
+                                <p><b>Website:</b> <a href="https://website.website" target="_blank">website.website</a></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                 </div>
             </div>
         </header>
