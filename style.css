@@ -303,22 +303,97 @@ a {
 }
 
 
+
 /* MOVIE HTML */
-
-
-
-/* INFO HTML */
-
-.info__landing {
-    /* padding: 0 48px ; */
-    /* background: linear-gradient(to bottom, #000000, #8B0000); */
+.movie__landing {
     margin: 0;
-    height: 100vh;
+    height: auto;
     justify-content: center;
     align-items: center;
     background: 
-      radial-gradient(circle, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 1) 100%), 
-      url('./asset/curtain.png') no-repeat center center/cover;
-    color: white;
+      linear-gradient(360deg, #000000 70%, #434343 100%);
+    color:white;
+}
 
+.movies__container {
+    height: auto;
+    padding: 0 64px;
+}
+
+.movie__search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 0;
+}
+
+.movie__bar {
+    width: 100%;
+    max-width: 500px;
+    height: 68px;
+    /* padding: 32px 0; */
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    animation: fade-up 650ms 700ms backwards;
+}
+
+.movie__search--btn {
+    z-index: 2;
+    margin: 8px;
+    height: calc(100% - 16px);
+    border-radius: 500px;
+    width: 100px;
+    background-color: rgba(229, 231, 235, 0.5);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    transition: all 300ms;
+    
+}
+
+.movie__search--btn:hover {
+    background-color: #fff;
+    color: black;
+}
+
+.movie__search--bar {
+    width: 100%;
+    border-radius: 500px;
+    border: 2px solid rgba(229, 231, 235, 0.5);
+    padding: 20px 192px 20px 32px;
+    color: #fff;
+    background-color: rgba(73, 31, 31, 0.1); 
+    backdrop-filter: blur(5px);
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); */
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    transition: border-color 300ms;
+}
+
+.header__search--bar:hover {
+    border: 2px solid rgb(255, 255, 255);
+}
+
+.movie__img {
+    max-width: 100%; 
+  height: auto; 
+  display: block; 
+  object-fit: contain; 
+}
+
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.movie {
+    padding: 32px 32px 32px 32px;
 }
