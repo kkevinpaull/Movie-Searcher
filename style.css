@@ -386,6 +386,16 @@ a {
   height: auto; 
   display: block; 
   object-fit: contain; 
+  transform: scale(0.8 );
+  transition: all 300ms ease-in-out;
+}
+
+.movie__img:hover {
+    transform: scale(0.82)
+}
+
+.info__description {
+    padding-left: 30px
 }
 
 .movies {
@@ -397,3 +407,4 @@ a {
 .movie {
     padding: 32px 32px 32px 32px;
 }
+
