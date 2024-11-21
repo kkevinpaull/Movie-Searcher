@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Explorer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./asset/logo.png" type="image/x-icon">
+    <script src="landing.js"></script>
+    <script src="https://kit.fontawesome.com/fe44566e6e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="landing">
+        <!-- Navigation -->
+        <nav class="nav__landing">
+            <div class="nav__container">
+                <div class="nav__row">
+                    <div class="nav__logo">
+                        <img class="nav__img" src="./asset/logo.png" alt="">
+                        <h1 class="logo__title">Movie Explorer</h1>
+                    </div>
+                    <ul class="nav__links">
+                        <li><a class="nav__link" href="index.html">Home</a></li>
+                        <li><a class="nav__link" href="movie.html">Find your movie</a></li>
+                        <li><a class="nav__link nav__link--border" href="mailto:castanetokevin@gmail.com" target="_blank">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="header__landing">
+            <div class="header__container">
+                <div class="header__row">
+                    <div class="header__description--container">
+                        <h1 class="header__description">
+                            The world’s best movie database
+                        </h1>
+                        <p class="header__sub--description">
+                            Explore. Search. Experience movies like never before.
+                        </p>
+                        <div class="search__bar">
+                            <input type="text" class="header__search--bar" placeholder="Search by Title or Keyword">
+                            <button class="header__search--btn">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Featured Movie Section -->
+                    <div class="featured__movie--container">
+                        <div id="featuredMovieWrapper" class="featured__movie--wrapper">
+                            <!-- Placeholder image -->
+                            <img class="featured__movie--img" src="" alt="Featured Movie">
+                            <div class="featured__movie--info">
+                                <h2 id="featuredMovieTitle" class="featured__movie--title">Featured Movie</h2>
+                                <p id="featuredMovieYear" class="featured__movie--year">Year</p>
+                                <p id="featuredMoviePlot" class="featured__movie--plot">Description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Footer -->
+        <footer class="footer__landing">
+            <div class="footer__container">
+                <p class="footer__copyright">
+                    Copyright 2024 © Kevin Castaneto
+                </p>
+                <ul class="footer__links">
+                    <a href="https://github.com/kkevinpaull" target="_blank">
+                        <i class="fa-brands footer__link fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/kevincastaneto/" target="_blank">
+                        <i class="fa-brands footer__link fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:castanetokevin@gmail.com" target="_blank">
+                        <i class="fa-solid footer__link fa-envelope"></i>
+                    </a>
+                </ul>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>
+
+
