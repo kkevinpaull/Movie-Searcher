@@ -30,32 +30,84 @@
         <header class="header__landing">
             <div class="header__container">
                 <div class="header__row">
-                    <h1 class="header__description">
-                        The world’s best movie database
-                    </h1>
-                    <p class="header__sub--description">
-                        Explore. Search. Experience movies like never before.
-                    </p>
-                    <div class="search__bar">
-                        <input type="text" class="header__search--bar" placeholder="Search by Title or Keyword">
-                        <button class="header__search--btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <div class="spotlight"></div>
+                    <div class="header__description--container">
+                        <h1 class="header__description">
+                            The world’s best movie database
+                        </h1>
+                        <p class="header__sub--description">
+                            Explore. Search. Experience movies like never before.
+                        </p>
+                        <div class="movie__search">
+                            <div class="movie__bar">
+                                <input
+                                type="text"
+                                id="searchInput"
+                                class="movie__search--bar"
+                                placeholder="Search by Title or Keyword"
+                                />
+                                <button id="searchButton" class="movie__search--btn">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                  </button>
+                                  <div class="spotlight"></div>
+                              </div>
+                            </div>
+                    </div>
+
+                    <!-- Featured Movie Section -->
+                    <div class="featured__movie--container">
+                        <h1 class="featured__title">
+                            Featured Movie
+                        </h1>
+                        <div id="featuredMovieWrapper" class="featured__movie--wrapper">
+                            <!-- Placeholder image -->
+                            <img class="featured__movie--img" src="" alt="Featured Movie">
+                            <div class="featured__movie--info">
+                                <h2 id="featuredMovieTitle" class="featured__movie--title">Featured Movie</h2>
+                                <p id="featuredMovieYear" class="featured__movie--year">Year</p>
+                                <p id="featuredMoviePlot" class="featured__movie--plot">Description</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
-        <footer class="footer__landing">
-            <div class="footer__container">
-                <p class="footer__copyright">
+    </section>
+    <div class="divider"></div>
+    <section id="movies__info">
+        <div class="movies__container">
+          <div class="movies__row">
+            <div class="movies">
+              <div class="movie">
+                <figure class="movie__img--wrapper">
+                  <img
+                    class="movie__img"
+                    src=""
+                    alt="MOVIE POSTER"
+                  />
+                </figure>
+                <div class="info__description">
+                    <div class="movie__title">TITLE</div>
+                    <div class="movie__year">Year released:</div>
+                    <div> 
+                        <a href="https://www.imdb.com/title/" target="_blank" class="movie__imdb"><i class="fa-brands fa-imdb"></i></a>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <footer class="footer__landing">
+        <div class="footer__container">
+            <p class="footer__copyright">
                     Copyright 2024 © Kevin Castaneto
-                </p>
-                <ul class="footer__links">
+            </p>
+            <ul class="footer__links">
                     <a href="https://github.com/kkevinpaull" target="_blank"><i class="fa-brands footer__link fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/kevincastaneto/" target="_blank"><i class="fa-brands footer__link fa-linkedin"></i></a>
                     <a href="mailto:castanetokevin@gmail.com" target="_blank"><i class="fa-solid footer__link fa-envelope"></i></a>
-                </ul>
-            </div>
-        </footer>
-     </section>
+            </ul>
+        </div>
+    </footer>
 </body>
 </html>
