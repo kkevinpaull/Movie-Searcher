@@ -222,7 +222,7 @@ a {
     position: relative;
     overflow: hidden;
     margin: 48px;
-    padding: 12px;
+    padding: 20px;
     border-radius: 16px;
     box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px); 
@@ -302,6 +302,52 @@ a {
     radial-gradient(circle, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 1) 100%), 
     url('./asset/black-watercolor-background.jpg') no-repeat center center/cover;
   }
+
+  .movies__row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filters {
+    display: flex;
+    justify-content: flex-end;
+    padding: 32px;
+  }
+
+  label, .genre {
+    padding: 12px;
+    color: white;
+  }
+
+  #applyFilters {
+    border-radius: 500px;
+    width: 160px;
+    margin-left: 10px;
+    background-color: rgba(229, 231, 235, 0.5);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    transition: all 300ms;
+  }
+
+
+  #applyFilters:hover {
+    background-color: #fff;
+    color: black;
+}
+
+#genre, #year {
+    color: black;
+    border-radius: 500px;
+    border: 2px solid rgba(229, 231, 235, 0.5);
+    padding: 10px 20px 10px 22px;
+    background-color: rgb(255, 255, 255); 
+    backdrop-filter: blur(5px);
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    font-weight: 500;
+}
 
   .movies {
     display: grid;

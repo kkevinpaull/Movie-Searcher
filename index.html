@@ -76,6 +76,24 @@
     <section id="movies__info">
         <div class="movies__container">
           <div class="movies__row">
+            <div class="filters">
+                <label class="genre">Genre: &nbsp </label>
+                <select id="genre" >
+                  <option value="action">Action</option>
+                  <option value="comedy">Comedy</option>
+                  <option value="drama">Drama</option>
+                  <option value="horror">Horror</option>
+                  <option value="thriller">Thriller</option>
+                  <option value="romance">Romance</option>
+                  <option value="sci-fi">Sci-Fi</option>
+                </select>
+              
+                <label for="year">Year: &nbsp</label>
+                <input type="number" id="year" placeholder="Enter year (e.g. 2020)" />
+              
+                <button id="applyFilters">Apply</button>
+              </div>
+              
             <div class="movies">
               <div class="movie">
                 <figure class="movie__img--wrapper">
