@@ -20,8 +20,8 @@
                         <h1 class="logo__title">Movie Explorer</h1>
                     </div>
                     <ul class="nav__links">
-                        <li><a class="nav__link" href="index.html">Home</a></li>
-                        <li><a class="nav__link" href="movie.html">Find your movie</a></li>
+                        <li><a class="nav__link" href="#">Home</a></li>
+                        <li><a class="nav__link" href="#movies__info">Find your movie</a></li>
                         <li><a class="nav__link nav__link--border" href="mailto:castanetokevin@gmail.com" target="_blank">Contact</a></li>
                     </ul>
                 </div>
@@ -45,10 +45,11 @@
                                 class="movie__search--bar"
                                 placeholder="Search by Title or Keyword"
                                 />
-                                <button id="searchButton" class="movie__search--btn">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                  </button>
-                                  <div class="spotlight"></div>
+                                <button id="searchButton" class="movie__search--btn" href="#movies__info">
+                                    <a href="#movies__info">
+                                        &nbsp; <i class="fa-solid fa-magnifying-glass"></i>
+                                    </a>
+                                </button>
                               </div>
                             </div>
                     </div>
@@ -77,20 +78,12 @@
         <div class="movies__container">
           <div class="movies__row">
             <div class="filters">
-                <label class="genre">Genre: &nbsp </label>
-                <select id="genre" >
-                  <option value="action">Action</option>
-                  <option value="comedy">Comedy</option>
-                  <option value="drama">Drama</option>
-                  <option value="horror">Horror</option>
-                  <option value="thriller">Thriller</option>
-                  <option value="romance">Romance</option>
-                  <option value="sci-fi">Sci-Fi</option>
-                </select>
-              
-                <label for="year">Year: &nbsp</label>
+                <label for="title">Title: </label>
+                <input type="text" id="title" placeholder="Movie title" />
+      
+                <label for="year">Year: </label>
                 <input type="number" id="year" placeholder="Enter year (e.g. 2020)" />
-              
+      
                 <button id="applyFilters">Apply</button>
               </div>
               
@@ -106,6 +99,7 @@
                 <div class="info__description">
                     <div class="movie__title">TITLE</div>
                     <div class="movie__year">Year released:</div>
+                    <div class="movie__plot">Plot:</div>
                     <div> 
                         <a href="https://www.imdb.com/title/" target="_blank" class="movie__imdb"><i class="fa-brands fa-imdb"></i></a>
                     </div>

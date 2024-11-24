@@ -38,28 +38,123 @@ setInterval(updateFeaturedMovie, 5000);
 document.addEventListener("DOMContentLoaded", updateFeaturedMovie);
 
 
+// Filter (Title and Year)
+document.addEventListener('DOMContentLoaded', () => { 
+    const applyFiltersButton = document.getElementById("applyFilters");
+    const moviesContainer = document.querySelector(".movies");
+  
+    applyFiltersButton.addEventListener("click", async () => {
+      const title = document.getElementById("title").value.trim();
+      const year = document.getElementById("year").value.trim();
+  
+      if (!title) {
+        alert("Please enter a keyword to search!");
+        return;
+      }
+  
+      let apiUrl = `https://www.omdbapi.com/?apikey=c1daa9fc&s=${encodeURIComponent(title)}`;
+      if (year) {
+        apiUrl += `&y=${year}`;
+      }
+  
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+  
+        if (data.Response === "True") {
+          displayMoviesWithPlots(data.Search);
+        } else {
+          moviesContainer.innerHTML = `<p class="error__message">No movies found. Try a different keyword!</p>`;
+        }
+      } catch (error) {
+        console.error("Error fetching the movie data:", error);
+        moviesContainer.innerHTML = `<p class="error__message">Error fetching data. Please try again later.</p>`;
+      }
+    });
+  
+    async function displayMoviesWithPlots(movies) {
+      moviesContainer.innerHTML = ""; 
+  
+      for (const movie of movies) {
+        try {
+          const movieDetails = await fetch(
+            `https://www.omdbapi.com/?apikey=c1daa9fc&i=${movie.imdbID}`
+          ).then((res) => res.json());
+
+          const movieElement = document.createElement("div");
+          movieElement.classList.add("movie");
+          movieElement.innerHTML = `
+            <figure class="movie__img--wrapper">
+            <img src="${movieDetails.Poster !== "N/A" ? movieDetails.Poster : "https://via.placeholder.com/200x300"}" class="movie__img" alt="${movieDetails.Title} Poster">
+            </figure>
+            <div class="movie__title">${movieDetails.Title}</div>
+            <div class="movie__year">${movieDetails.Year}</div>
+            <div class="movie__plot">${movieDetails.Plot}</div>
+            <a href="https://www.imdb.com/title/${movieDetails.imdbID}" class="movie__imdb" target="_blank"><i class="fa-brands fa-imdb"></i></a>
+          `;
+          moviesContainer.appendChild(movieElement);
+        } catch (error) {
+          console.error("Error fetching detailed movie data:", error);
+        }
+      }
+    }
+  });
 
 // INITIAL MOVIE
-async function main(searchQuery) {
+// async function main(searchQuery) {
 
-    const randomSearchQueries = ['action', 'comedy', 'drama', 'horror', 'adventure', 'thriller', 'romance', 'sci-fi'];
+//     const randomSearchQueries = ['action', 'comedy', 'drama', 'horror', 'adventure', 'thriller', 'romance', 'sci-fi'];
     
+//     if (!searchQuery) {
+//         const randomIndex = Math.floor(Math.random() * randomSearchQueries.length);
+//         searchQuery = randomSearchQueries[randomIndex];
+//     }
+
+//     const movies = await fetch(`https://www.omdbapi.com/?apikey=c1daa9fc&s=${searchQuery}&plot=short`);
+//     const moviesData = await movies.json();
+
+//     if (moviesData.Response === "True") {
+//         const movieListEl = document.querySelector(".movies");
+//         movieListEl.innerHTML = moviesData.Search.map((movie) => movieHTML(movie)).join("");
+//     } else {
+//         console.error("Error fetching movies:", moviesData.Error);
+//     }
+// }
+
+async function main(searchQuery) {
+    const randomSearchQueries = ['action', 'comedy', 'drama', 'horror', 'adventure', 'thriller', 'romance', 'sci-fi'];
+
+    // Random search if no query provided
     if (!searchQuery) {
         const randomIndex = Math.floor(Math.random() * randomSearchQueries.length);
         searchQuery = randomSearchQueries[randomIndex];
     }
 
-    const movies = await fetch(`https://www.omdbapi.com/?apikey=c1daa9fc&s=${searchQuery}`);
-    const moviesData = await movies.json();
+    try {
+        // Fetch movies based on search query
+        const movies = await fetch(`https://www.omdbapi.com/?apikey=c1daa9fc&s=${searchQuery}`);
+        const moviesData = await movies.json();
 
-    if (moviesData.Response === "True") {
-        const movieListEl = document.querySelector(".movies");
-        movieListEl.innerHTML = moviesData.Search.map((movie) => movieHTML(movie)).join("");
-    } else {
-        console.error("Error fetching movies:", moviesData.Error);
+        if (moviesData.Response === "True") {
+            const movieListEl = document.querySelector(".movies");
+
+            // Fetch detailed info for each movie to include the short plot
+            const detailedMovies = await Promise.all(
+                moviesData.Search.map(async (movie) => {
+                    const movieDetails = await fetch(`https://www.omdbapi.com/?apikey=c1daa9fc&i=${movie.imdbID}&plot=short`);
+                    return await movieDetails.json();
+                })
+            );
+
+            // Render the movies with detailed info (including plot)
+            movieListEl.innerHTML = detailedMovies.map((movie) => movieHTML(movie)).join("");
+        } else {
+            console.error("Error fetching movies:", moviesData.Error);
+        }
+    } catch (error) {
+        console.error("Error:", error);
     }
 }
-
   
   function movieHTML(movie) {
     return `<div class="movies">
@@ -73,7 +168,8 @@ async function main(searchQuery) {
       </figure>
       <div class="info__description">
             <div class="movie__title">${movie.Title}</div>
-            <div class="movie__year">Year released: ${movie.Year}</div>
+            <div class="movie__year">${movie.Year}</div>
+            <div class="movie__year">${movie.Plot}</div>
              <div> 
                 <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="movie__imdb"><i class="fa-brands fa-imdb"></i></a>
             </div>
@@ -86,6 +182,8 @@ async function main(searchQuery) {
   document.addEventListener('DOMContentLoaded', () => { 
     const searchButton = document.getElementById('searchButton');
     const searchInput = document.getElementById('searchInput');
+    const title = document.getElementById('title');
+    const year = document.getElementById('year');
   
     searchButton.addEventListener('click', () => {
         const searchTerm = searchInput.value.trim();
@@ -100,6 +198,13 @@ async function main(searchQuery) {
             if (searchTerm) {
                 main(searchTerm);
             }
+        }
+    });
+
+    title.addEventListener('click', () => {
+        const searchTerm = title.value.trim();
+        if (searchTerm) {
+            main(searchTerm);
         }
     });
   
