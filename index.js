@@ -124,21 +124,17 @@ document.addEventListener('DOMContentLoaded', () => {
 async function main(searchQuery) {
     const randomSearchQueries = ['action', 'comedy', 'drama', 'horror', 'adventure', 'thriller', 'romance', 'sci-fi'];
 
-    // Random search if no query provided
     if (!searchQuery) {
         const randomIndex = Math.floor(Math.random() * randomSearchQueries.length);
         searchQuery = randomSearchQueries[randomIndex];
     }
 
     try {
-        // Fetch movies based on search query
         const movies = await fetch(`https://www.omdbapi.com/?apikey=c1daa9fc&s=${searchQuery}`);
         const moviesData = await movies.json();
 
         if (moviesData.Response === "True") {
             const movieListEl = document.querySelector(".movies");
-
-            // Fetch detailed info for each movie to include the short plot
             const detailedMovies = await Promise.all(
                 moviesData.Search.map(async (movie) => {
                     const movieDetails = await fetch(`https://www.omdbapi.com/?apikey=c1daa9fc&i=${movie.imdbID}&plot=short`);
@@ -146,7 +142,7 @@ async function main(searchQuery) {
                 })
             );
 
-            // Render the movies with detailed info (including plot)
+
             movieListEl.innerHTML = detailedMovies.map((movie) => movieHTML(movie)).join("");
         } else {
             console.error("Error fetching movies:", moviesData.Error);
